@@ -11,7 +11,7 @@ import helper
 
 # Setting page layout
 st.set_page_config(
-    page_title="Object Detection using YOLOv8",
+    page_title="Tomato Disease Detection using yolo v8",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -25,7 +25,7 @@ st.sidebar.header("ML Model Config")
 
 # Model Options
 model_type = st.sidebar.radio(
-    "Select Task", ['Detection', 'Segmentation'])
+    "Select Task", ['Detection'])
 
 confidence = float(st.sidebar.slider(
     "Select Model Confidence", 25, 100, 40)) / 100
@@ -33,9 +33,7 @@ confidence = float(st.sidebar.slider(
 # Selecting Detection Or Segmentation
 if model_type == 'Detection':
     model_path = Path(settings.DETECTION_MODEL)
-elif model_type == 'Segmentation':
-    model_path = Path(settings.SEGMENTATION_MODEL)
-
+    
 # Load Pre-trained ML Model
 try:
     model = helper.load_model(model_path)
